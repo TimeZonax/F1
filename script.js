@@ -1,27 +1,26 @@
 // ข้อมูลจำลองสำหรับ Logic
-const myUsername = "โดเรม่อน";
+const myUsername = "ผู้กล้าแห่งคณะ";
 const mockReviews = [
-    { user: "นักชิมเบอร์หนึ่ง", review: "ข้าวมันไก่ร้านนี้เนื้อนุ่มมาก ให้ 5 ดาวเลย!", shop: "ข้าวมันไก่ป้าหน่อย" },
-    { user: "GamerFoodie", review: "ก๋วยเตี๋ยวรสชาติเข้มข้นดี แต่รอนานไปหน่อย", shop: "ก๋วยเตี๋ยวเรือเทพ" },
+    { user: "นักชิมเบอร์หนึ่ง", review: "ข้าวมันไก่ร้านนี้เนื้อนุ่มมาก ให้ 5 ดาวเลย!", shop: "ร้านข้าวมันไก่ป้าหน่อย" },
+    { user: "GamerFoodie", review: "ก๋วยเตี๋ยวรสชาติเข้มข้นดี แต่รอนานไปหน่อย", shop: "ร้านก๋วยเตี๋ยวเรือเทพ" },
     { user: "MasterChefX", review: "ชาเย็นร้านใหม่ดีงามมาก หวานกำลังดี!", shop: "ร้านน้ำปั่นเจ๊จอย" },
-    { user: "Freshman_01", review: "ผัดกะเพราร้านหน้าคณะคือที่สุดของความเผ็ด!", shop: "ครัวลุงสมชาย" }
+    { user: "Freshman_01", review: "ผัดกะเพราร้านหน้าคณะคือที่สุดของความเผ็ด!", shop: "ร้านส้มตำแซ่บเวอร์" }
 ];
 const shopRanks = [
     { name: "ร้านก๋วยเตี๋ยวเรือเทพ", score: 4.8 },
     { name: "ร้านข้าวมันไก่ป้าหน่อย", score: 4.5 },
-    { name: "ร้านน้ำปั่นเจ๊จอย", score: 4.2 }
+    { name: "ร้านส้มตำแซ่บเวอร์", score: 4.6 }
 ];
 const menuRanks = [
     { name: "ข้าวมันไก่หนังกรอบ", score: 4.9 },
     { name: "ก๋วยเตี๋ยวเรือเนื้อเปื่อย", score: 4.7 },
     { name: "ชาเย็นอาม่า", score: 4.6 }
 ];
-let currentAvatarLook = 'linear-gradient(45deg, #004d99, #003366)'; // สีเริ่มต้นของอวาตาร์
+let currentAvatarLook = 'linear-gradient(45deg, #3498db, #2980b9)'; // สีเริ่มต้นของอวาตาร์
 
 // --- [General Modal Functions] ---
 function openModal(modalId) {
     if (modalId === 'avatar-modal') {
-        // อัปเดต Preview เมื่อเปิด Modal
         document.getElementById('custom-avatar-display').style.background = currentAvatarLook;
     }
     document.getElementById(modalId).style.display = 'block';
@@ -33,10 +32,6 @@ function closeModal(modalId) {
 
 // --- [XP & Button Effects] ---
 
-/**
- * ฟังก์ชันแสดง XP Gain Effect
- * @param {string} text ข้อความที่จะแสดง
- */
 function showXPEffect(text) {
     const oldEffect = document.getElementById('xp-effect');
     if (oldEffect) oldEffect.remove();
@@ -67,10 +62,14 @@ function openVotingModal() {
 function changeAvatarLook(lookType) {
     const avatarDisplay = document.getElementById('custom-avatar-display');
 
-    if (lookType === 'blue') {
-        currentAvatarLook = 'linear-gradient(135deg, #3498db, #004d99)'; // Deep Blue Look
-    } else if (lookType === 'green') {
-        currentAvatarLook = 'linear-gradient(135deg, #2ecc71, #27ae60)'; // Green Look
+    if (lookType === 'blue-hat') {
+        currentAvatarLook = 'linear-gradient(135deg, #1abc9c, #16a085)'; 
+    } else if (lookType === 'green-hair') {
+        currentAvatarLook = 'linear-gradient(135deg, #9b59b6, #8e44ad)';
+    } else if (lookType === 'sunglasses') {
+        currentAvatarLook = 'linear-gradient(135deg, #f39c12, #e67e22)';
+    } else if (lookType === 'default') {
+         currentAvatarLook = 'linear-gradient(45deg, #3498db, #2980b9)';
     }
     
     avatarDisplay.style.background = currentAvatarLook;
@@ -111,16 +110,19 @@ function displayReviewBubbles() {
     mockReviews.forEach((item, index) => {
         const avatarImg = document.createElement('div');
         avatarImg.className = 'mini-avatar';
-        avatarImg.style.backgroundColor = '#' + Math.floor(Math.random()*16777215).toString(16); 
-        avatarImg.innerText = item.user.substring(0, 3); 
+        // สร้างสีสุ่มสำหรับอวาตาร์รีวิว
+        const randomColor = '#' + Math.floor(Math.random()*16777215).toString(16).padStart(6, '0');
+        avatarImg.style.backgroundColor = randomColor; 
+        avatarImg.innerText = item.user.substring(0, 2); 
 
         const bubble = document.createElement('div');
         bubble.className = 'review-bubble';
         bubble.innerHTML = `
             ${avatarImg.outerHTML}
-            <p>${item.review}</p>
+            <p>"${item.review}"</p>
         `;
         
+        // ตำแหน่งสุ่มในพื้นที่จำลอง (ปรับให้ดูเหมาะสมกับ Mobile/Desktop)
         const leftPos = Math.floor(Math.random() * 60) + 5; 
         const topPos = Math.floor(Math.random() * 55) + 15; 
 
@@ -168,24 +170,25 @@ function simulateBotReply() {
         "อวาตาร์คุณเท่มาก! ได้หมวกใหม่มาเหรอ?",
         "อย่าลืมไปโหวตร้านสุดสัปดาห์นี้นะ!"
     ];
-    const botUser = "Tastlinl Bot";
+    const botUser = "Tastlink Bot"; 
     const replyText = replies[Math.floor(Math.random() * replies.length)];
     appendMessage(botUser, replyText);
 }
 
 // --- [Real-time Status Update & Alert] ---
 function updateShopStatuses() {
+    const allShopCards = document.querySelectorAll('.shop-card');
     const statuses = [
         { statusClass: 'status-busy', text: '🔴 รอนาน (15-20 นาที)' },
         { statusClass: 'status-chill', text: '🟢 สบายๆ (3-5 นาที)' },
         { statusClass: 'status-moderate', text: '🟡 ปานกลาง (8-10 นาที)' }
     ];
 
-    const shopCards = document.querySelectorAll('.shop-card');
-    shopCards.forEach(card => {
+    allShopCards.forEach(card => {
         const randomStatus = statuses[Math.floor(Math.random() * statuses.length)];
         const statusBar = card.querySelector('.status-bar');
         
+        // ลบคลาสสถานะเดิมออก
         card.classList.remove('status-busy', 'status-chill', 'status-moderate');
         card.classList.add(randomStatus.statusClass);
         statusBar.innerHTML = `สถานะ: ${randomStatus.text}`;
@@ -198,9 +201,23 @@ function triggerShopAlert(shopName, reason) {
     openModal('alert-modal');
 }
 
+// --- [Loading Overlay Logic: แก้ไขให้แสดงผลทันที] ---
+function hideLoadingOverlay() {
+    const overlay = document.getElementById('loading-overlay');
+    // **ลบ setTimeout ออก เพื่อให้แสดงผลทันที**
+    if (overlay) {
+        overlay.style.opacity = '0'; 
+        setTimeout(() => {
+            overlay.style.display = 'none'; 
+        }, 500); // ยังคงให้มี fade out 0.5 วินาทีเพื่อความสวยงาม
+    }
+}
 
 // --- [Initialization] ---
 document.addEventListener('DOMContentLoaded', () => {
+    
+    hideLoadingOverlay(); // **เรียกใช้ทันที**
+
     // กำหนดสีเริ่มต้นของอวาตาร์
     document.getElementById('avatar-container').style.background = currentAvatarLook;
 
@@ -213,6 +230,6 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Trigger Alert หลัง 15 วินาที (The WOW Factor)
     setTimeout(() => {
-        triggerShopAlert("ร้านก๋วยเตี๋ยวเรือเทพ", "ปิดทำการกะทันหัน (วัตถุดิบหมด)");
+        triggerShopAlert("ร้านเบเกอรี่หวานเจี๊ยบ", "ปิดทำการกะทันหัน (วัตถุดิบหมด)");
     }, 15000); 
 });
