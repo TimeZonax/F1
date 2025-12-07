@@ -3,29 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tastlink | The Ultimate Food Court Experience</title>
+    <title>Tastlink | The Premium Food Court Experience</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Mitr:wght=300;400;500;600;700&family=Poppins:wght=300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Mitr:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    
     <div id="loading-overlay">
         <div class="loader"></div>
         <p>กำลังโหลดประสบการณ์ Tastlink...</p>
     </div>
 
-    <div id="notification-feed" class="notification-feed">
-        <div class="feed-header">
-            <h4><i class="fas fa-bell"></i> อัปเดตล่าสุด</h4>
-            <span class="close-feed" onclick="closeNotificationFeed()">&times;</span>
-        </div>
-        <div id="feed-content" class="feed-content">
-            <p class="feed-item status-order-complete"><i class="fas fa-check-circle"></i> ออเดอร์ #101 พร้อมรับแล้ว!</p>
-            <p class="feed-item status-new-review"><i class="fas fa-star"></i> มีรีวิวใหม่จาก MasterChefX</p>
-        </div>
-    </div>
-    
     <header class="game-header">
         <div class="header-left">
             <div id="avatar-container" class="avatar-display" onclick="openModal('avatar-modal')">
@@ -39,14 +27,15 @@
             </div>
         </div>
         <nav class="game-nav">
-            <a href="#today-shops" class="active"><i class="fas fa-store"></i> <span class="nav-text">ร้านวันนี้</span></a>
-            <a onclick="openReviewPage()"><i class="fas fa-search-dollar"></i> <span class="nav-text">รีวิวอาหาร</span></a> 
-            <a href="#ranking-panel"><i class="fas fa-trophy"></i> <span class="nav-text">อันดับ</span></a>
-            <a href="#quests"><i class="fas fa-clipboard-list"></i> <span class="nav-text">เควส</span></a>
-            <a href="#park"><i class="fas fa-comments"></i> <span class="nav-text">ชุมชนแชท</span></a>
+            <a href="#today-shops"><i class="fas fa-store"></i> ร้านวันนี้</a>
+            <a onclick="openReviewPage()"><i class="fas fa-search-dollar"></i> รีวิวอาหาร</a> 
+            <a href="#ranking-panel"><i class="fas fa-trophy"></i> อันดับ</a>
+            <a href="#quests"><i class="fas fa-clipboard-list"></i> เควส</a>
+            <a href="#park"><i class="fas fa-comments"></i> ชุมชนแชท</a>
         </nav>
         <div class="header-right">
-            <button class="icon-button" onclick="toggleNotificationFeed()"><i class="fas fa-bell"></i><span id="feed-indicator" class="feed-indicator"></span></button>
+            <button class="icon-button"><i class="fas fa-bell"></i></button>
+            <button class="icon-button"><i class="fas fa-cog"></i></button>
         </div>
     </header>
 
@@ -54,8 +43,8 @@
         <section id="today-shops" class="section-panel">
             <h2><i class="fas fa-fire"></i> ร้านค้าประจำวันนี้</h2>
             <div id="shop-list" class="shop-grid">
-                <div class="shop-card status-busy" data-shop-id="1">
-                    <div class="shop-image-placeholder" style="background-image: url('https://picsum.photos/id/1080/400/250');"></div>
+                <div class="shop-card status-busy">
+                    <div class="shop-image-placeholder" style="background-image: url('https://picsum.photos/id/1080/300/180');"></div>
                     <div class="shop-content">
                         <h3>ร้านข้าวมันไก่ป้าหน่อย</h3>
                         <p class="status-bar" id="status-1">สถานะ: 🔴 รอนาน (15-20 นาที)</p>
@@ -63,8 +52,8 @@
                         <button onclick="viewShopDetails(1)"><i class="fas fa-eye"></i> ดูเมนู & สถานะ</button>
                     </div>
                 </div>
-                <div class="shop-card status-chill" data-shop-id="2">
-                    <div class="shop-image-placeholder" style="background-image: url('https://picsum.photos/id/1084/400/250');"></div>
+                <div class="shop-card status-chill">
+                    <div class="shop-image-placeholder" style="background-image: url('https://picsum.photos/id/1084/300/180');"></div>
                     <div class="shop-content">
                         <h3>ร้านก๋วยเตี๋ยวเรือเทพ</h3>
                         <p class="status-bar" id="status-2">สถานะ: 🟢 สบายๆ (3-5 นาที)</p>
@@ -72,8 +61,8 @@
                         <button onclick="viewShopDetails(2)"><i class="fas fa-eye"></i> ดูเมนู & สถานะ</button>
                     </div>
                 </div>
-                <div class="shop-card status-moderate" data-shop-id="3">
-                    <div class="shop-image-placeholder" style="background-image: url('https://picsum.photos/id/1060/400/250');"></div>
+                <div class="shop-card status-moderate">
+                    <div class="shop-image-placeholder" style="background-image: url('https://picsum.photos/id/1060/300/180');"></div>
                     <div class="shop-content">
                         <h3>ร้านน้ำปั่นเจ๊จอย</h3>
                         <p class="status-bar" id="status-3">สถานะ: 🟡 ปานกลาง (8-10 นาที)</p>
@@ -81,8 +70,8 @@
                         <button onclick="viewShopDetails(3)"><i class="fas fa-eye"></i> ดูเมนู & สถานะ</button>
                     </div>
                 </div>
-                <div class="shop-card status-chill" data-shop-id="4">
-                    <div class="shop-image-placeholder" style="background-image: url('https://picsum.photos/id/1054/400/250');"></div>
+                <div class="shop-card status-chill">
+                    <div class="shop-image-placeholder" style="background-image: url('https://picsum.photos/id/1054/300/180');"></div>
                     <div class="shop-content">
                         <h3>ร้านส้มตำแซ่บเวอร์</h3>
                         <p class="status-bar" id="status-4">สถานะ: 🟢 สบายๆ (5-7 นาที)</p>
@@ -90,8 +79,8 @@
                         <button onclick="viewShopDetails(4)"><i class="fas fa-eye"></i> ดูเมนู & สถานะ</button>
                     </div>
                 </div>
-                <div class="shop-card status-busy" data-shop-id="5">
-                    <div class="shop-image-placeholder" style="background-image: url('https://picsum.photos/id/1053/400/250');"></div>
+                <div class="shop-card status-busy">
+                    <div class="shop-image-placeholder" style="background-image: url('https://picsum.photos/id/1053/300/180');"></div>
                     <div class="shop-content">
                         <h3>ร้านเบเกอรี่หวานเจี๊ยบ</h3>
                         <p class="status-bar" id="status-5">สถานะ: 🔴 รอนาน (10-15 นาที)</p>
@@ -99,7 +88,6 @@
                         <button onclick="viewShopDetails(5)"><i class="fas fa-eye"></i> ดูเมนู & สถานะ</button>
                     </div>
                 </div>
-                
             </div>
         </section>
 
@@ -158,23 +146,16 @@
         <p>&copy; 2025 Tastlink Community. | Premium Demo.</p>
     </footer>
 
-    <button id="fab-order" class="fab-order" onclick="openVotingModal()">
-        <i class="fas fa-concierge-bell"></i>
-    </button>
-    
     <div id="avatar-modal" class="modal" onclick="if(event.target.id === 'avatar-modal') closeModal('avatar-modal')">
         <div class="modal-content">
             <span class="close-button" onclick="closeModal('avatar-modal')">&times;</span>
             <h2>🎨 ห้องแต่งตัวอวาตาร์</h2>
-            <div class="naming-section">
-                <label for="new-username">ชื่อผู้ใช้:</label>
-                <input type="text" id="new-username" placeholder="ตั้งชื่อผู้กล้าของคุณ">
-            </div>
             <div class="avatar-preview">
                 <div id="custom-avatar-display" class="mock-avatar">
                     <i class="fas fa-user-circle"></i>
                 </div>
             </div>
+            
             <h3>ตัวเลือกเครื่องแต่งกาย (Demo)</h3>
             <div class="avatar-options">
                 <button onclick="changeAvatarLook('blue-hat')"><i class="fas fa-hat-wizard"></i> หมวกฟ้า</button>
@@ -182,30 +163,38 @@
                 <button onclick="changeAvatarLook('sunglasses')"><i class="fas fa-glasses"></i> แว่นกันแดด</button>
                 <button onclick="changeAvatarLook('default')"><i class="fas fa-undo-alt"></i> ค่าเริ่มต้น</button>
             </div>
-            <button class="save-button" onclick="saveAvatar()"><i class="fas fa-save"></i> บันทึกการตั้งค่า</button>
+            <button class="save-button" onclick="saveAvatar()"><i class="fas fa-save"></i> บันทึกการแต่งตัว</button>
         </div>
     </div>
+    
     <div id="shop-detail-modal" class="modal" onclick="if(event.target.id === 'shop-detail-modal') closeModal('shop-detail-modal')">
         <div class="modal-content shop-detail-content">
             <span class="close-button" onclick="closeModal('shop-detail-modal')">&times;</span>
             <h2 id="shop-detail-title"></h2>
+            
             <div class="shop-meta">
                 <p id="shop-detail-rating"><i class="fas fa-star"></i> 4.5 (89 รีวิว)</p>
                 <p id="shop-detail-queue-status">🔴 รอนาน (15-20 นาที)</p>
             </div>
+
             <h3>รายการเมนูวันนี้</h3>
-            <div id="menu-list-container"></div>
-            <button onclick="simulateOrder()"><i class="fas fa-shopping-cart"></i> สั่งซื้อ & รับ 50 XP</button>
+            <div id="menu-list-container">
+                </div>
+            
+            <button onclick="showXPEffect('+50 XP! (สั่งซื้อเสร็จสิ้น)'); closeModal('shop-detail-modal');"><i class="fas fa-shopping-cart"></i> สั่งซื้อ & รับ 50 XP</button>
         </div>
     </div>
+
     <div id="review-page-modal" class="modal full-screen-modal" onclick="if(event.target.id === 'review-page-modal') closeModal('review-page-modal')">
         <div class="modal-content full-screen-content">
             <span class="close-button" onclick="closeModal('review-page-modal')">&times;</span>
             <h2><i class="fas fa-search-dollar"></i> กระดานรีวิวอาหารทั้งหมด</h2>
-            <div id="all-reviews-container" class="all-reviews-grid"></div>
+            <div id="all-reviews-container" class="all-reviews-grid">
+                </div>
             <button class="post-review-button" onclick="alert('Mockup: หน้าเขียนรีวิวใหม่!')"><i class="fas fa-pencil-alt"></i> เขียนรีวิวใหม่</button>
         </div>
     </div>
+
     <div id="alert-modal" class="modal alert-high-priority" onclick="if(event.target.id === 'alert-modal') closeModal('alert-modal')">
         <div class="modal-content">
             <span class="close-button" onclick="closeModal('alert-modal')">&times;</span>
